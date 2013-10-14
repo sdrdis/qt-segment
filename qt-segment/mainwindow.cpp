@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->sceneTo = new QGraphicsScene(this);
     ui->graphicsViewTo->setScene(this->sceneTo);
+    this->refresh();
 }
 
 MainWindow::~MainWindow()
@@ -28,19 +29,21 @@ void MainWindow::refresh() {
     QElapsedTimer timer;
     timer.start();
 
+    float sigma = this->ui->sigmaSlider->value() * 0.05;
+    this->ui->sigmaVal->setText(QString().setNum(sigma));
+    float k = this->ui->thresholdSlider->value();
+    this->ui->thresholdVal->setText(QString().setNum(k));
+    int min_size = this->ui->minSizeSlider->value();
+    this->ui->minSizeVal->setText(QString().setNum(min_size));
+
     if (showOriginal) {
         QPixmap pixmapFrom = QPixmap::fromImage(im);
         this->sceneTo->clear();
         this->sceneTo->addPixmap(pixmapFrom);
         this->sceneTo->setSceneRect(0, 0, pixmapFrom.width(), pixmapFrom.height());
-    } else {
-        float sigma = this->ui->sigmaSlider->value() * 0.05;
-        this->ui->sigmaVal->setText(QString().setNum(sigma));
-        float k = this->ui->thresholdSlider->value();
-        this->ui->thresholdVal->setText(QString().setNum(k));
-        int min_size = this->ui->minSizeSlider->value();
-        this->ui->minSizeVal->setText(QString().setNum(min_size));
 
+        statusBar()->showMessage("");
+    } else {
         image <rgb> *input = Utility::qImageToImage(im);
 
         int num_ccs;
@@ -53,10 +56,12 @@ void MainWindow::refresh() {
         QPixmap pixmapTo = QPixmap::fromImage(res);
         this->sceneTo->clear();
         this->sceneTo->addPixmap(pixmapTo);
+
+        qint64 overall = timer.elapsed();
+        statusBar()->showMessage(QString("Number of components: ") + QString().setNum(num_ccs) + "    Overall processing time: " + QString().setNum(overall) + QString("ms"));
     }
 
-    qint64 overall = timer.elapsed();
-    statusBar()->showMessage("Overall processing time: " + QString().setNum(overall) + QString("ms"));
+
 }
 
 
@@ -97,4 +102,9 @@ void MainWindow::on_actionSave_segmented_as_triggered()
 void MainWindow::on_actionAbout_triggered()
 {
     QMessageBox::about(this, "About", "This software has been implemented by Sébastien Drouyer and is under MIT license.\nhttps://github.com/sdrdis/qt-segment\n\nThis software is derived from \"Efficient Graph-Based Image Segmentation\" by Pedro F. Felzenszwalb and Daniel P. Huttenlocher.\nhttp://cs.brown.edu/~pff/segment/");
+}
+
+void MainWindow::on_actionQuit_triggered()
+{
+    QApplication::quit();
 }

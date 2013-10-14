@@ -166,7 +166,7 @@
      <x>0</x>
      <y>0</y>
      <width>964</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -175,6 +175,7 @@
     </property>
     <addaction name="actionOpen"/>
     <addaction name="actionSave_segmented_as"/>
+    <addaction name="actionQuit"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
@@ -198,7 +199,7 @@
     <string>Open...</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+O, Meta+O</string>
+    <string>Ctrl+O</string>
    </property>
   </action>
   <action name="actionShow_original">
@@ -217,12 +218,20 @@
     <string>Save segmented as...</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+S, Meta+S</string>
+    <string>Ctrl+S</string>
    </property>
   </action>
   <action name="actionAbout">
    <property name="text">
     <string>About</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+H</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
    </property>
   </action>
  </widget>
