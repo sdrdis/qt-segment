@@ -101,7 +101,7 @@ void MainWindow::on_actionSave_segmented_as_triggered()
 
 void MainWindow::on_actionAbout_triggered()
 {
-    QMessageBox::about(this, "About", "This software has been implemented by Sébastien Drouyer and is under MIT license.\nhttps://github.com/sdrdis/qt-segment\n\nThis software is derived from \"Efficient Graph-Based Image Segmentation\" by Pedro F. Felzenszwalb and Daniel P. Huttenlocher.\nhttp://cs.brown.edu/~pff/segment/");
+    QMessageBox::about(this, "About", "This software has been implemented by Sebastien Drouyer and is under MIT license.\nhttps://github.com/sdrdis/qt-segment\n\nThis software is derived from \"Efficient Graph-Based Image Segmentation\" by Pedro F. Felzenszwalb and Daniel P. Huttenlocher.\nhttp://cs.brown.edu/~pff/segment/");
 }
 
 void MainWindow::on_actionQuit_triggered()
