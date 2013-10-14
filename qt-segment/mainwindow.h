@@ -6,19 +6,15 @@
 
 #include <QImage>
 
-#include <image.h>
-#include <misc.h>
-
 #include <QRgb>
-
-
-#include <QDebug>
 
 #include <QElapsedTimer>
 #include <QFileDialog>
 #include <QResizeEvent>
 
 #include <QMessageBox>
+
+#include "utility.h"
 
 
 namespace Ui {
@@ -34,8 +30,6 @@ public:
     ~MainWindow();
     void setImage(QImage im);
     void refresh();
-    image <rgb> * qImageToImage(QImage image);
-    QImage imageToQImage(image<rgb> * im);
     
 private slots:
     void on_sigmaSlider_valueChanged(int value);

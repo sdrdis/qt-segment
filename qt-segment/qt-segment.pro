@@ -13,7 +13,8 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    utility.cpp
 
 HEADERS  += mainwindow.h\
         convolve.h\
@@ -25,6 +26,7 @@ HEADERS  += mainwindow.h\
         misc.h\
         pnmfile.h\
         segment-graph.h\
-        segment-image.h
+        segment-image.h \
+    utility.h
 
 FORMS    += mainwindow.ui

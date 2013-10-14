@@ -1,8 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include "segment-image.h"
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -43,11 +41,11 @@ void MainWindow::refresh() {
         int min_size = this->ui->minSizeSlider->value();
         this->ui->minSizeVal->setText(QString().setNum(min_size));
 
-        image <rgb> *input = qImageToImage(im);
+        image <rgb> *input = Utility::qImageToImage(im);
 
         int num_ccs;
-        image<rgb> *seg = segment_image(input, sigma, k, min_size, &num_ccs);
-        res = imageToQImage(seg);
+        image<rgb> *seg = Utility::segmentImage(input, sigma, k, min_size, &num_ccs);
+        res = Utility::imageToQImage(seg);
 
         delete input;
         delete seg;
@@ -61,36 +59,6 @@ void MainWindow::refresh() {
     statusBar()->showMessage("Overall processing time: " + QString().setNum(overall) + QString("ms"));
 }
 
-
-image <rgb> * MainWindow::qImageToImage(QImage im) {
-    image<rgb> *input = new image<rgb>(im.width(), im.height(), true);
-
-    for (int x = 0; x < im.width(); x++) {
-        for (int y = 0; y < im.height(); y++) {
-            rgb pix;
-            QRgb pixF = im.pixel(x, y);
-            pix.r = qRed(pixF);
-            pix.g = qGreen(pixF);
-            pix.b = qBlue(pixF);
-            input->data[y * im.width() + x] = pix;
-        }
-    }
-
-    return input;
-}
-
-QImage MainWindow::imageToQImage(image<rgb> * im) {
-    QImage res(im->width(), im->height(), QImage::Format_RGB32);
-
-    for (int x = 0; x < im->width(); x++) {
-        for (int y = 0; y < im->height(); y++) {
-            rgb pix = im->data[y * im->width() + x];
-            res.setPixel(x, y, qRgb(pix.r, pix.g, pix.b));
-        }
-    }
-
-    return res;
-}
 
 void MainWindow::on_sigmaSlider_valueChanged(int value)
 {
