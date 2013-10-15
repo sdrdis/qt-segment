@@ -82,7 +82,7 @@ void MainWindow::on_minSizeSlider_valueChanged(int value)
 
 void MainWindow::on_actionOpen_triggered()
 {
-    QString filename = QFileDialog::getOpenFileName(this, "Open image...", QString(), "Image Files (*.png *.jpg *.bmp);;All files (*.*)");
+    QString filename = QFileDialog::getOpenFileName(this, "Open image...", QString(), "Image Files (*.bmp *.gif *.jpg *.jpeg *.png *.pbm *.pgm *.ppm *.xbm *.xpm);;All files (*.*)");
     this->setImage(QImage(filename));
     this->refresh();
 }
@@ -95,7 +95,7 @@ void MainWindow::on_actionShow_original_triggered(bool checked)
 
 void MainWindow::on_actionSave_segmented_as_triggered()
 {
-    QString filename = QFileDialog::getSaveFileName(this, "Save segmented image as...", QString(), "Image Files (*.png *.jpg *.bmp);;All files (*.*)");
+    QString filename = QFileDialog::getSaveFileName(this, "Save segmented image as...", QString(), "Image Files (*.bmp *.jpg *.jpeg *.png *.ppm *.xbm *.xpm);;All files (*.*)");
     res.save(filename);
 }
 
