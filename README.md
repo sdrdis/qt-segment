@@ -18,5 +18,7 @@ This algorithm is under GPL (2 or later version) license, and this extension is 
 * The algorithm can now load and save a lot of new image formats
 ([BMP, GIF, JPG, JPEG, PNG, PBM, PGM, PPM, XBM, XPM](http://qt-project.org/doc/qt-5.0/qtgui/qimage.html#reading-and-writing-image-files)).
 
+This extension has been implemented by [Sébastien Drouyer](http://sebastien.drouyer.com).
+
 ## Screenshot of the visual interface
 ![alt text](https://raw.github.com/sdrdis/qt-segment/master/screenshot.png "Screenshot")
