@@ -16,7 +16,7 @@ This algorithm is under GPL (2 or later version) license, and this extension is 
 * It is cross-platform; Windows, Linux, Mac
 * An interface was added in order for the user to apprehend how each parameter affect the segmentation processing (see below)
 * The algorithm can now load and save a lot of new image formats
-* ([BMP, GIF, JPG, JPEG, PNG, PBM, PGM, PPM, XBM, XPM](http://qt-project.org/doc/qt-5.0/qtgui/qimage.html#reading-and-writing-image-files)).
+([BMP, GIF, JPG, JPEG, PNG, PBM, PGM, PPM, XBM, XPM](http://qt-project.org/doc/qt-5.0/qtgui/qimage.html#reading-and-writing-image-files)).
 
 ## Screenshot of the visual interface
 ![alt text](https://raw.github.com/sdrdis/qt-segment/master/screenshot.png "Screenshot")
